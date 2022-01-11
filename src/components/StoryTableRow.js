@@ -19,7 +19,7 @@ export default class StoryTableRow extends Component {
 
     render() {
         return (
-            <tr>
+            <tr> 
                 <td>{this.props.obj.name}</td>
                 <td>{this.props.obj.country}</td>
                 <td>{this.props.obj.story}</td>

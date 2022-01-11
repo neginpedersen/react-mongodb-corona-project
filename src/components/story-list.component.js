@@ -38,7 +38,6 @@ export default class StoryList extends Component {
     {this.state.storys.map((person,i) => (
        <div className="history-contianer">
          <h5>{person.name} from {person.country} </h5> 
-
     <p key={i}>{person.story}</p>
     </div>
   ))}

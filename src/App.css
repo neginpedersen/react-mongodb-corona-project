@@ -1,3 +1,8 @@
+.app-header{
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
+  border: 1px solid black;
+  z-index: 1000;
+}
 .wrapper {
   padding-top: 30px;
 }
@@ -53,4 +58,11 @@ position: relative;
 
 .form-wrapper, .table-wrapper {
   max-width: 1140px;
+}
+
+.img-fluid{
+  height: auto;
+position: absolute;
+width: 1920px;
+left: -500px;
 }

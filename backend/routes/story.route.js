@@ -2,6 +2,7 @@ let mongoose = require('mongoose'),
   express = require('express'),
   router = express.Router();
 
+const { json } = require('body-parser');
 // Story Model
 let storySchema = require('../models/Story');
 
@@ -42,22 +43,51 @@ router.route('/edit-story/:id').get((req, res) => {
 
 // Update Story
 router.route('/update-story/:id').put((req, res, next) => {
-  storySchema.findByIdAndUpdate(req.params.id, {
-    $set: req.body
-  }, (error, data) => {
-    if (error) {
-      return next(error);
-      console.log(error)
-    } else {
-      res.json(data)
-      console.log('Story updated successfully !')
+  function cleanStringify(object) {
+    if (object && typeof object === 'object') {
+        object = copyWithoutCircularReferences([object], object);
     }
-  })
+    return JSON.stringify(object);
+
+    function copyWithoutCircularReferences(references, object) {
+        var cleanObject = {};
+        Object.keys(object).forEach(function(key) {
+            var value = object[key];
+            if (value && typeof value === 'object') {
+                if (references.indexOf(value) < 0) {
+                    references.push(value);
+                    cleanObject[key] = copyWithoutCircularReferences(references, value);
+                    references.pop();
+                } else {
+                    cleanObject[key] = '###_Circular_###';
+                }
+            } else if (typeof value !== 'function') {
+                cleanObject[key] = value;
+            }
+        });
+        return cleanObject;
+    }
+}
+
+  console.log('id'+cleanStringify(req));
+  // storySchema.findByIdAndUpdate(req.params.id, {name:req.params.name,story:req.params.story
+storySchema.findByIdAndUpdate(req.params.id, {name:req.body.name,story:req.body.story,country:req.body.story
+
+}, function (err, response) {
+  // Handle any possible database errors
+  if (err) {
+    console.log("we hit an error" + err);
+    res.json({
+      message: 'Database Update Failure'
+    });
+  }
+  console.log("This is the Response: " + response);
+})
 })
 
 // Delete Story
 router.route('/delete-story/:id').delete((req, res, next) => {
-  StorySchema.findByIdAndRemove(req.params.id, (error, data) => {
+  storySchema.findByIdAndRemove(req.params.id, (error, data) => {
     if (error) {
       return next(error);
     } else {
