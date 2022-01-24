@@ -45,11 +45,6 @@ export default class HeaderNavbar extends Component {
                       Story List
                     </Link>
                   </Nav>
-                  <Nav>
-                    <Link to={"/counter"} className="nav-link">
-                      Counter
-                    </Link>
-                  </Nav>
                 </Nav>
     
               </Container>
