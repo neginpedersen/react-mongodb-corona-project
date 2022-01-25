@@ -1,6 +1,10 @@
 import React, { Component } from "react";
-
+import covid2trans from '../images/covid2trans.png'; 
+import virus3 from '../images/virus3.png'; 
+import Footer from './footer.component'; 
 import UserService from "../services/user.service";
+import Button from 'react-bootstrap/Button';
+import Image from 'react-bootstrap/Image';
 
 export default class Home extends Component {
   constructor(props) {
@@ -31,11 +35,29 @@ export default class Home extends Component {
 
   render() {
     return (
-      <div className="container">
-        <header className="jumbotron">
-          <h3>{this.state.content}</h3>
-        </header>
-      </div>
+    <div>
+          <div className="dark-blue">
+                <div className="flex-cont">
+                  <div className="left-text">
+                    <b><h1>Did you know?</h1></b>
+                    <h3>Corona killed more than 5 millions<br></br> and affected more than 10 milions in the world</h3>
+                  </div>
+                  <Image src={covid2trans} />
+                </div>
+                <div class="jsx-4183910149 top-banner-bottom-angle"><svg id="svg-triangle-top" viewBox="0 0 200 15" preserveAspectRatio="none" class="jsx-4183910149 svg-triangle"><polygon points="0,15 200,0 0,0" class="jsx-4183910149"></polygon></svg><div class="jsx-4183910149 top-banner-page-breaker"></div></div>
+          </div>
+          <div className="light-grey">
+                <div className="flex-cont"> 
+                <Image src={virus3}  />
+                <div className="right-text">
+                  <b><h1>How did corona affect you?</h1></b>
+                  <h3>Do you want to tell us your sotry?</h3>
+                  <Button variant="dark" size="lg">Share your Story</Button>
+                </div>
+              </div>
+          </div>
+          <Footer></Footer>
+    </div>  
     );
   }
 }

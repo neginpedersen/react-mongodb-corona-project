@@ -12,14 +12,7 @@ export default class Header extends Component {
         return (
                     
         <Container>
-            <Row>
-                <Col xs={5} md={5}>
-                    <Image src={coronavirus} fluid/>
-                </Col>
-                <Col xs={5} md={7}>
-                <h1> Corona Story<Badge variant="secondary">Share your stories of Corona and pandemic!</Badge></h1>
-                </Col>
-            </Row>
+            
         </Container>
         );
     }
