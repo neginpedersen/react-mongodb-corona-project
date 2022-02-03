@@ -1,20 +1,52 @@
 import React, { Component } from 'react';
 import Container from 'react-bootstrap/Container';
-import coronavirus from '../coronavirus.jpg'; 
-import Image from 'react-bootstrap/Image';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Badge from 'react-bootstrap/Badge';
 import "bootstrap/dist/css/bootstrap.css";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { Router, Switch, Route, Link } from "react-router-dom";
+//import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { logout } from "../actions/auth";
+import { clearMessage } from "../actions/message";
+import { history } from '../helpers/history';
 
-export default class HeaderNavbar extends Component {
+class HeaderNavbar extends Component {
+  constructor(props) {
+    super(props);
+    this.logOut = this.logOut.bind(this);
+
+    this.state = {
+        showAdminBoard: false,
+      currentUser: undefined,
+    };
+
+    history.listen((location) => {
+      props.dispatch(clearMessage()); // clear message when changing location
+    });
+  }
+
+  componentDidMount() {
+    const user = this.props.user;
+
+    if (user) {
+      this.setState({
+        currentUser: user,
+        showAdminBoard: user.roles.includes("ROLE_ADMIN"),
+      });
+    }
+  }
+
+  logOut() {
+    this.props.dispatch(logout());
+  }
 
    
     render() {
+      const { currentUser,showAdminBoard } = this.state;
+
         return (
+          <Router history={history}>
+          <div>
                     
             <header className="App-header">
       
@@ -27,8 +59,51 @@ export default class HeaderNavbar extends Component {
                   </Link>
                 </Navbar.Brand>
     
-                <Nav className="justify-content-end">
+                <Nav className="nav-link">
+                {showAdminBoard && (
                   <Nav>
+                  <Link to={"/admin"} className="nav-link">
+                  Admin Board
+                  </Link>
+                </Nav>  
+              
+              )}
+
+              {currentUser && (
+                <Nav>
+                  <Link to={"/user"} className="nav-link">
+                    User
+                  </Link>
+                  </Nav>
+              )}
+               {currentUser ? (<div className="inherit-display">
+             <Nav>
+                  <Link to={"/profile"} className="nav-link">
+                    {currentUser.username}
+                  </Link>
+              </Nav>
+              <Nav>
+              <a href="/login" className="nav-link" onClick={this.logOut}>
+                    LogOut
+                  </a>
+            </Nav>
+            </div>
+              
+            ) : (
+              <div className="inherit-display">
+              <Nav>
+                  <Link to={"/login"} className="nav-link">
+                    Login
+                  </Link>
+                  </Nav>
+                  <Nav>
+                  <Link to={"/register"} className="nav-link">
+                    Sign Up
+                  </Link>
+              </Nav>
+              </div>
+            )}
+                <Nav>
                     <Link to={"/create-story"} className="nav-link">
                       Create Story
                     </Link>
@@ -50,7 +125,20 @@ export default class HeaderNavbar extends Component {
               </Container>
             </Navbar>
           </header>
+          </div>
+          </Router> 
         );
     }
-}
+  }
+  
+
+    function mapStateToProps(state) {
+      const { user } = state.auth;
+      return {
+        user,
+      };
+    }
+
+
+    export default connect(mapStateToProps)(HeaderNavbar);
 
