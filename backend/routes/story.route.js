@@ -46,11 +46,22 @@ router.route('/edit-story/:id').get((req, res) => {
 
 // Update Story
 router.route('/update-story/:id').put((req, res, next) => {
+  var [name,country,story] = [req.body.name,req.body.country,req.body.story];
+
+  let data = Object.assign({},
+    name === undefined ? null : {name},
+    country === undefined ? null : {country},
+    story === undefined ? null : {story}
+  );
   
+console.log('data:'+JSON.stringify(data)+'requests:'+typeof (req.body.name)+req.body.country+req.body.story);
 
-storySchema.findByIdAndUpdate(req.params.id, {name:req.body.name,story:req.body.story,country:req.body.story
+    storySchema.findByIdAndUpdate(req.params.id, data
 
-}, function (err, response) {
+
+//storySchema.findByIdAndUpdate(req.params.id, {name:req.body.name,story:req.body.story,country:req.body.story
+
+, function (err, response) {
   // Handle any possible database errors
   if (err) {
     console.log("we hit an error" + err);

@@ -185,3 +185,45 @@ color:#e3e4e6;
 .qoute {
   font-size: 2rem;
 }
+.table-edit-story {
+  font-size: 1.2em;
+  border: 1px solid #152238;
+  color:#666;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+
+.table-edit-story td,
+.table-edit-story th {
+  padding: 0.8em;
+  border-bottom: 1px solid rgba(181, 213, 144, 0.5);
+}
+.table-edit-story th {
+  background: #152238;
+  color: #fff;
+  font-weight: normal;
+  text-align: right;
+}
+.table-edit-story td {
+  text-align: right;
+}
+
+.table-edit-story tr:hover {
+  background: rgba(181, 213, 144, 0.2);
+}
+.table-edit-story tr td:nth-child(2n) {
+  background: rgba(181, 213, 144, 0.2);
+}
+
+.table-edit-story {
+  min-width: 980px;
+  max-width: 1200px;
+}
+
+.table-edit-story th:first-child {
+  width: 8em;
+}
+
+

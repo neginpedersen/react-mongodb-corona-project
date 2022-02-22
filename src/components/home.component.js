@@ -44,7 +44,7 @@ export default class Home extends Component {
                   </div>
                   <Image src={covid2trans} />
                 </div>
-                <div class="jsx-4183910149 top-banner-bottom-angle"><svg id="svg-triangle-top" viewBox="0 0 200 15" preserveAspectRatio="none" class="jsx-4183910149 svg-triangle"><polygon points="0,15 200,0 0,0" class="jsx-4183910149"></polygon></svg><div class="jsx-4183910149 top-banner-page-breaker"></div></div>
+                <div className="jsx-4183910149 top-banner-bottom-angle"><svg id="svg-triangle-top" viewBox="0 0 200 15" preserveAspectRatio="none" className="jsx-4183910149 svg-triangle"><polygon points="0,15 200,0 0,0" className="jsx-4183910149"></polygon></svg><div className="jsx-4183910149 top-banner-page-breaker"></div></div>
           </div>
           <div className="light-grey">
                 <div className="flex-cont"> 

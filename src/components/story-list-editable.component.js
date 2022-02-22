@@ -52,42 +52,41 @@ CancelEdit()
   this.setState({newData:{name:'',country:'',story:'',id:''}});
 }
 
-SetnewData(id,field,data){
-  if(id === this.state.newData['id']){ this.setState({ newData: {...this.state.newData, [field]:data ,'id':id}})}
-  else{ this.setState({newData:{name:'',country:'',story:'',id:''}});
+SetnewData(id,field,data)
+{
+  this.setState({newData:{name:'',country:'',story:'',id:''}});
   this.setState({ newData: {...this.state.newData, [field]:data ,'id':id}});
 }
 
-}
-
-SaveStory(story_id){
-const putdata={
-    _id:story_id,
-    name: this.state.newData.name,
-    country: this.state.newData.country,
-    story: this.state.newData.story
-  }
-  axios.put('http://localhost:4000/storys/update-story/' + story_id,putdata,{
-    headers: {
-      "x-access-token": "token-value",
-    },
-  })
-      .then((res) => {
-       console.log(res);
-        console.log('story successfully updated!');
-      }).catch((error) => {
-      })
-
+SaveStory(story_id)
+{
+  const putdata ={
+      _id:story_id,
+      name: this.state.newData.name,
+      country: this.state.newData.country,
+      story: this.state.newData.story
+    }
+    axios.put('http://localhost:4000/storys/update-story/' + story_id,putdata,{
+      headers: {
+        "x-access-token": "token-value",
+      },
+    })
+        .then((res) => {
+        console.log(res);
+          console.log('story successfully updated!');
+        }).catch((error) => {
+        })
 }
 
 render() {
   return (
-    <table>
+    <table className='table-edit-story'>
       <thead>
         <tr>
           <th>Name</th>
           <th>Country</th>
           <th>Story</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -96,21 +95,21 @@ render() {
             <tr key={story._id}>
               <td>
                 <input
-                  type="text"
+                  type="text" name='name'
                   defaultValue={story.name}
                   onChange={(e) => this.SetnewData(story._id,'name',e.target.value)}
                 />
               </td>
               <td>
                 <input
-                  type="text"
+                  type="text" name='country'
                   defaultValue={story.country}
                   onChange={(e) => this.SetnewData(story._id,'country',e.target.value)}
                 />
               </td>
               <td>
                 <input
-                  type="text"
+                  type="text" name='story'
                   defaultValue={story.story}
                   onChange={(e) => this.SetnewData(story._id,'story',e.target.value)}
                 />
@@ -130,6 +129,7 @@ render() {
           ) : (
             <tr key={story._id}>
               <td>{story.name}</td>
+              <td>{story.country}</td>
               <td>{story.story}</td>
               <td>
                 <button

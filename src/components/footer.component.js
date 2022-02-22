@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { FaBeer,FaLinkedinIn,FaPhoneAlt, FaMailBulk,FaFacebookF,FaHome,FaTwitter } from 'react-icons/fa';
+import { FaBeer,FaLinkedinIn,FaPhoneAlt, FaMailBulk,FaFacebookF,FaHome,FaTwitter,FaInstagram } from 'react-icons/fa';
 
 export default class Footer extends Component {
 

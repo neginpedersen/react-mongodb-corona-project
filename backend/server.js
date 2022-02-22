@@ -3,17 +3,18 @@ let mongoose = require('mongoose');
 let cors = require('cors');
 let bodyParser = require('body-parser');
 let dbConfig = require('./database/db');
-//require('./routes/auth.routes')(app);
-//require('./routes/user.routes')(app);
+
 // Express Route
-const storyRoute = require('../backend/routes/story.route')
+const storyRoute = require('../backend/routes/story.route');
+const verifyCaptcha = require('../backend/routes/verifyrecaptcha.route');
+
 const db = require("./models");
 const Role = db.role;
 
 // Connecting mongoDB Database
 mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig.db, {
-  useNewUrlParser: true
+  useNewUrlParser: true, useFindAndModify: false
 }).then(() => {
   console.log('Database sucessfully connected!');
   initial();
@@ -29,7 +30,9 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(cors());
-app.use('/storys', storyRoute)
+app.use('/storys', storyRoute);
+app.use('/verifyrecaptcha', verifyCaptcha);
+
 
 
 // PORT
@@ -40,7 +43,9 @@ const server = app.listen(port, () => {
 
 // 404 Error
 app.use((req, res, next) => {
-  next(createError(404));
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); 
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
 });
 
 app.use(function (err, req, res, next) {
@@ -78,6 +83,8 @@ auth_app.get("/", (req, res) => {
 
 require("./routes/auth.routes")(auth_app);
 require("./routes/user.routes")(auth_app);
+//require("./routes/verify-recaptcha.routes")(auth_app);
+
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

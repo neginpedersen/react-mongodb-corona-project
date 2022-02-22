@@ -97,6 +97,11 @@ class HeaderNavbar extends Component {
                   </Link>
                   </Nav>
                   <Nav>
+                  <Link to={"/create-story-captcha"} className="nav-link">
+                  create-story-captcha
+                  </Link>
+                  </Nav>
+                  <Nav>
                   <Link to={"/register"} className="nav-link">
                     Sign Up
                   </Link>

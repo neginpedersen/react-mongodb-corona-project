@@ -3,6 +3,8 @@ import "./App.css";
 import StoryListEditable from "./components/story-list-editable.component";
 import CreateStory from "./components/create-story.component";
 import StoryList from "./components/story-list.component";
+import CreateStoryCaptcha from "./components/create-story-captcha.component";
+
 import HeaderNavbar from "./components/header-navbar.component";
 import React, { Component } from "react";
 import { connect } from "react-redux";
@@ -36,6 +38,8 @@ class App extends Component {
                 <Route exact path='/' component={StoryList} /> 
                 <Route path="/create-story" component={CreateStory} />
                 <Route path="/story-list-editable" component={StoryListEditable} />
+                <Route path="/create-story-captcha" component={CreateStoryCaptcha} />
+
             </Switch>
           </div>
       </Router>
