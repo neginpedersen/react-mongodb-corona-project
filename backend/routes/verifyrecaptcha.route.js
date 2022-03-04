@@ -22,7 +22,7 @@ function simpleStringify (object){
 };
 
  router.post('/', function(req, res) {
-//res.send('POST handler for /verifyrecaptcha route.'+req.body.response);
+   
 axios.post('https://www.google.com/recaptcha/api/siteverify',
   {
     secret: '6LdYB1UeAAAAALV18Zu7MzYUjthXN37iZd9TIu1q',
@@ -30,10 +30,9 @@ axios.post('https://www.google.com/recaptcha/api/siteverify',
   }
 )
 .then((response) => {
-
-
-  console.log('responsefrom google:'+simpleStringify(response));
-  return response.status;
+//console.log('responsefrom google:'+response.status+simpleStringify(response));
+ // return response.status;
+ return 1;
 }, (error) => {
   console.log('error3 from google:'+error);
 });

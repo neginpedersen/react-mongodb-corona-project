@@ -1,0 +1,6 @@
+@mixin flex-cont($direction, $wrap, $justify) {
+    display: flex;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+    $justify: $justify;
+  }

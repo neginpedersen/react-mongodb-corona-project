@@ -1,5 +1,5 @@
-import "bootstrap/dist/css/bootstrap.css";
-import "./App.css";
+//import "bootstrap/dist/css/bootstrap.css";
+import "./sass/main.scss";
 import StoryListEditable from "./components/story-list-editable.component";
 import CreateStory from "./components/create-story.component";
 import StoryList from "./components/story-list.component";

@@ -52,10 +52,21 @@ export default class Home extends Component {
                 <div className="right-text">
                   <b><h1>How did corona affect you?</h1></b>
                   <h3>Do you want to tell us your sotry?</h3>
-                  <Button variant="dark" size="lg">Share your Story</Button>
                 </div>
               </div>
           </div>
+          
+            <div className='main-flex-cont main-page-share-cont'>
+            <div className='white-cont'>
+              <h3>Want to be come a member?</h3>  
+              <Button variant="dark" size="lg">Share your Story</Button>
+            </div>  
+            <div className='white-cont'>  
+            <h3>Share a one time story?</h3>
+              <Button variant="dark" size="lg">Share your Story</Button>
+            </div>  
+              </div>  
+          
           <Footer></Footer>
     </div>  
     );

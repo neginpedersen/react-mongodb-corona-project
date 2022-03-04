@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-import ReCaptchaV2 from 'react-google-recaptcha';
+//import ReCaptcha from 'react-google-recaptcha';
+import ReCaptcha from "@matt-block/react-recaptcha-v2";
 
 
 
@@ -16,6 +17,7 @@ export default class CreateStoryCaptcha extends Component {
     this.onChangeStoryEmail = this.onChangeStoryEmail.bind(this);
     this.onChangeStoryRollno = this.onChangeStoryRollno.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onVerifycaptcha = this.onVerifycaptcha.bind(this);
     this.handletoken =this.handletoken.bind(this);
 
     // Setting up state
@@ -23,24 +25,20 @@ export default class CreateStoryCaptcha extends Component {
       name: '',
       country: '',
       story: '',
-      ablebutton:true,
+      ablebutton:'',
       captchatoken:''
 
     }
   }
 
 
-  onSubmit(e){
-    e.preventDefault();
-   // let token= e.target.captcha.value;
-    this.setState({ablebutton:true});
-   const capthcharequest = {response:this.state.captchatoken};
-   console.log('fromtoken');
-   // axios.post('http://localhost:4000/verifycaptcha', storyObject)
-     // .then(res => console.log(res.data));
-
-      axios.post('http://localhost:4000/verifyrecaptcha', capthcharequest)
-    .then(res => console.log('response fromrecaptcha'+res) )
+  onVerifycaptcha(){
+    //this.setState({ablebutton:true});
+    console.log('from verify');
+    const capthcharequest = {response:this.state.captchatoken};
+    console.log('fromtoken');
+    axios.post('http://localhost:4000/verifyrecaptcha', capthcharequest)
+    .then(/*res => console.log('response fromrecaptcha'+res*/res => res?this.setState({ablebutton:true}):this.setState({ablebutton:''})) 
     .catch(error => {
         console.error('There was an error!', error.message);
     });
@@ -49,13 +47,32 @@ export default class CreateStoryCaptcha extends Component {
 
 
 
+  
+onSubmit(e){
+  e.preventDefault()
+
+  const storyObject = {
+    name: this.state.name,
+    country: this.state.country,
+    story: this.state.story
+  };
+
+  axios.post('http://localhost:4000/storys/create-story', storyObject)
+    .then(res => console.log(res.data));
+
+  this.setState({
+    name: '',
+    country: '',
+    story: ''
+  });
+}
+
+
 
   handletoken(token) {
     this.setState({captchatoken:token});
     console.log('1'+token);
-    console.log('2'+token.target.value);
-    
-    
+     
   }
 
   
@@ -93,14 +110,16 @@ export default class CreateStoryCaptcha extends Component {
           <Form.Label>Story</Form.Label>
           <Form.Control as="textarea" name='story' rows="3" type="text" value={this.state.story} onChange={this.onChangeStoryRollno} />
         </Form.Group>
-        <ReCaptchaV2 sitekey='6LdYB1UeAAAAAMelkxGtLKwir8RW7OSTtFmNelWh' name='captcha' onChange={this.handletoken}  />
+        <ReCaptcha
+        siteKey="6LdYB1UeAAAAAMelkxGtLKwir8RW7OSTtFmNelWh"
+        theme="light"
+        size="normal"
+        onSuccess={(captcha) => this.setState({ablebutton:true}) /*console.log(`Successful, result is ${captcha}`)*/}
+        onExpire={() => this.setState({ablebutton:''}) /*console.log("Verification has expired, re-verify.")*/}
+        onError={() => this.setState({ablebutton:''}) /*console.log("Something went wrong, check your conenction")*/}
+      />
         
-        <Button variant="danger" disabled={!this.state.ablebutton
-        
-        
-        
-        
-        }  size="lg" block="block" type="submit">
+        <Button variant="danger" disabled={!this.state.ablebutton}  size="lg" block="block" type="submit" >
 
           Create Story
         </Button>
