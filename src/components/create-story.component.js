@@ -76,7 +76,7 @@ export default class CreateStory extends Component {
           <Form.Control as="textarea" rows="3" type="text" value={this.state.story} onChange={this.onChangeStoryRollno} />
         </Form.Group>
         
-        <Button variant="danger" size="lg" block="block" type="submit">
+        <Button variant="primary" size="lg" block="block" type="submit">
           Create Story
         </Button>
       </Form>

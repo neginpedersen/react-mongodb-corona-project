@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { connect } from "react-redux";
-import { Router, Switch, Route, Link } from "react-router-dom";
+import { Router, Link } from "react-router-dom";
 //import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { logout } from "../actions/auth";
 import { clearMessage } from "../actions/message";

@@ -4,3 +4,15 @@
     flex-wrap: $wrap;
     $justify: $justify;
   }
+@mixin warning-box($color,$text-color, $width,$height) {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; ;
+  background-color: $color;
+  color: $text-color;
+  line: $width;
+  line-height: $height;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-top: 5px;
+  text-align: center;
+
+}

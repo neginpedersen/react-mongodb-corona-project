@@ -1,5 +1,9 @@
 //import "bootstrap/dist/css/bootstrap.css";
-import "./sass/main.scss";
+//import "./sass/main.scss";
+import "./sass/layout/layout.scss";
+import "./sass/pages/home-page.scss";
+
+import "./sass/reset/reset.scss";
 import StoryListEditable from "./components/story-list-editable.component";
 import CreateStory from "./components/create-story.component";
 import StoryList from "./components/story-list.component";
@@ -8,15 +12,13 @@ import CreateStoryCaptcha from "./components/create-story-captcha.component";
 import HeaderNavbar from "./components/header-navbar.component";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Router, Switch, Route, Link } from "react-router-dom";
+import { Router, Switch, Route } from "react-router-dom";
 import Login from "./components/login.component";
 import Register from "./components/register.component";
 import Home from "./components/home.component";
 import Profile from "./components/profile.component";
 import BoardUser from "./components/board-user.component";
 import BoardAdmin from "./components/board-admin.component";
-import { logout } from "./actions/auth";
-import { clearMessage } from "./actions/message";
 import { history } from "./helpers/history";
 class App extends Component {
  

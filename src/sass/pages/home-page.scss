@@ -1,96 +1,15 @@
-@use './utilities/variables';
-@use './utilities/mixins';
+@use '../utilities/variables';
+@use '../utilities/mixins';
 
-.app-header {
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  border: 1px solid black;
-  z-index: 1000;
-}
-.wrapper {
-  padding-top: 30px;
-}
+
+
 body h3 {
   margin-bottom: 25px;
 }
 .navbar-brand a {
   color: #ffffff;
 }
-.form-wrapper {
-  max-width: 500px;
-  margin: 0 auto;
-}
-.table-wrapper {
-  max-width: 500px;
-  margin: 0 auto;
-  max-width: 700px;
-}
-.edit-link {
-  padding: 7px 10px;
-  font-size: 0.875rem;
-  line-height: normal;
-  border-radius: 0.2rem;
-  color: #fff;
-  background-color: #28a745;
-  border-color: #28a745;
-  margin-right: 10px;
-  position: relative;
-  top: 1px;
 
-  &:hover {
-    text-decoration: none;
-    color: #ffffff;
-  }
-}
-.history-contianer {
-  background: white;
-  box-shadow: 0 0 0.7142857142857143rem #cccccc;
-  padding: 1.1428571428571428rem 2.2857142857142856rem 0.5714285714285714rem 2.2857142857142856rem;
-  margin: 1.7142857142857142rem 0;
-  border-radius: 0.21428571428571427rem;
-  position: relative;
-}
-.bg-light {
-  background-color: white;
-}
-.form-wrapper,
-.table-wrapper {
-  max-width: 1140px;
-}
-.img-fluid {
-  height: auto;
-  position: absolute;
-  width: 1920px;
-  left: -500px;
-}
-label {
-  display: block;
-  margin-top: 10px;
-}
-.card-container.card {
-  max-width: 350px;
-  padding: 40px 40px;
-}
-.card {
-  background-color: #f7f7f7;
-  padding: 20px 25px 30px;
-  margin: 0 auto 25px;
-  margin-top: 50px;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-}
-.profile-img-card {
-  width: 96px;
-  height: 96px;
-  margin: 0 auto 10px;
-  display: block;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-}
 .dark-blue {
   background-color: #152238;
 }
@@ -135,6 +54,7 @@ top-banner-bottom-angle.jsx-4183910149 {
 }
 .flex-cont-qoute {
   @include mixins.flex-cont(row,nowrap,space-between);
+  justify-content: space-around;
   padding: 20px 5% 20px 10%;
 }
 .footer-list {
@@ -203,9 +123,12 @@ top-banner-bottom-angle.jsx-4183910149 {
 .main-page-share-cont {
   background-color: variables.$main-color-3;
   padding: 120px;
+  justify-content: space-around;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
 .white-cont {
   background-color: white;
   padding: 30px;
   text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
