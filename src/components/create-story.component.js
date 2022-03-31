@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import CountrySelector from './country-selecetor.component';
+
 
 
 
@@ -12,11 +14,9 @@ export default class CreateStory extends Component {
 
     // Setting up functions
     this.onChangeStoryName = this.onChangeStoryName.bind(this);
-    this.onChangeStoryEmail = this.onChangeStoryEmail.bind(this);
     this.onChangeStoryRollno = this.onChangeStoryRollno.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-
-    // Setting up state
+    this.handleCountrySelect = this.handleCountrySelect.bind(this);
     this.state = {
       name: '',
       country: '',
@@ -28,7 +28,7 @@ export default class CreateStory extends Component {
     this.setState({ name: e.target.value })
   }
 
-  onChangeStoryEmail(e) {
+  onChangeCountry(e) {
     this.setState({ country: e.target.value })
   }
 
@@ -36,9 +36,14 @@ export default class CreateStory extends Component {
     this.setState({ story: e.target.value })
   }
 
+  handleCountrySelect(val){
+    this.setState({ country: val })
+    console.log('val:'+val);
+
+  }
+
   onSubmit(e) {
     e.preventDefault()
-
     const storyObject = {
       name: this.state.name,
       country: this.state.country,
@@ -57,8 +62,6 @@ export default class CreateStory extends Component {
 
   render() {
     return (<div>
-     
-   
     <div className="form-wrapper">
       <Form onSubmit={this.onSubmit}>
         <Form.Group controlId="Name">
@@ -68,20 +71,20 @@ export default class CreateStory extends Component {
 
         <Form.Group controlId="Country">
           <Form.Label>Country</Form.Label>
-          <Form.Control type="text" value={this.state.country} onChange={this.onChangeStoryEmail} />
+        <CountrySelector onCountryselect={this.handleCountrySelect}></CountrySelector>
         </Form.Group>
 
         <Form.Group controlId="Story">
           <Form.Label>Story</Form.Label>
           <Form.Control as="textarea" rows="3" type="text" value={this.state.story} onChange={this.onChangeStoryRollno} />
         </Form.Group>
-        
+
         <Button variant="primary" size="lg" block="block" type="submit">
           Create Story
         </Button>
       </Form>
     </div>
-    
+
     </div>);
   }
 }

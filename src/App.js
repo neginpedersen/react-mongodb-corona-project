@@ -1,4 +1,4 @@
-//import "bootstrap/dist/css/bootstrap.css";
+// import "bootstrap/dist/css/bootstrap.css";
 //import "./sass/main.scss";
 import "./sass/layout/layout.scss";
 import "./sass/pages/home-page.scss";
@@ -21,7 +21,7 @@ import BoardUser from "./components/board-user.component";
 import BoardAdmin from "./components/board-admin.component";
 import { history } from "./helpers/history";
 class App extends Component {
- 
+
 
    render() {
 
@@ -37,7 +37,7 @@ class App extends Component {
               <Route path="/user" component={BoardUser} />
               <Route path="/admin" component={BoardAdmin} />
               <Route path="/story-list" component={StoryList} />
-                <Route exact path='/' component={StoryList} /> 
+                <Route exact path='/' component={StoryList} />
                 <Route path="/create-story" component={CreateStory} />
                 <Route path="/story-list-editable" component={StoryListEditable} />
                 <Route path="/create-story-captcha" component={CreateStoryCaptcha} />
