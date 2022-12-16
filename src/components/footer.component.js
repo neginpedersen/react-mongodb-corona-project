@@ -3,11 +3,11 @@ import { FaLinkedinIn, FaMailBulk,FaFacebookF,FaHome,FaTwitter,FaInstagram } fro
 
 export default class Footer extends Component {
 
-   
+
     render() {
         return (
-                    
-       <div className='flex-cont-qoute dark-blue'>
+
+       <div className='flex-cont-qoute dark-blue position-bottom'>
                <ul className='footer-list'>
                    <li>contact us</li>
                    <li>About us</li>
@@ -15,7 +15,7 @@ export default class Footer extends Component {
                </ul>
 
                <ul className='footer-list'>
-                  
+
                    <li><FaHome />https://dp-soft.dk</li>
                    <li><FaLinkedinIn /> linked in</li>
                    <li><FaFacebookF /> <FaTwitter /><FaInstagram /></li>
@@ -27,7 +27,7 @@ export default class Footer extends Component {
                     <div className='qoute'>“In order to write about life first you must live it.”</div>
                     <div className='writer'>Ernest Hemingway</div>
                </div>
-        </div> 
+        </div>
         );
     }
 }

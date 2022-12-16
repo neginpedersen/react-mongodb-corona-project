@@ -1,6 +1,9 @@
 @use './utilities/variables';
 @use './utilities/mixins';
 
+.App{ min-height:100vh; margin:0;
+  display:flex;
+  flex-direction:column;  }
 .app-header {
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   border: 1px solid black;
@@ -50,7 +53,7 @@ body h3 {
   position: relative;
 }
 .bg-light {
-  background-color: white;
+  background-color: variables.$text-color-2;
 }
 .form-wrapper,
 .table-wrapper {
@@ -91,8 +94,8 @@ label {
   -webkit-border-radius: 50%;
   border-radius: 50%;
 }
-.dark-blue {
-  background-color: #152238;
+.light-grey {
+  background-color: variables.$main-color-4;
 }
 .main-flex-cont {
   margin: 0 auto;
@@ -104,6 +107,9 @@ label {
     margin-left: 5%;
   }
 }
+.flex-cont-column {
+  @include mixins.flex-cont(column,wrap,flex-start);
+}
 .left-text {
   color: white;
   margin: 14% 4% auto 13%;
@@ -113,25 +119,18 @@ label {
     font-size: 3.5rem;
   }
 }
-top-banner-bottom-angle.jsx-4183910149 {
-  height: 34px;
-}
-.top-banner-bottom-angle.jsx-4183910149 {
-  background-color: #e3e4e6;
-  height: 64px;
-  position: relative;
-  width: 100%;
-}
-.svg-triangle.jsx-4183910149 {
-  fill: #152238;
-  height: 100%;
-  width: 100%;
-}
+
 .light-grey {
-  background-color: #e3e4e6;
+  background-color: variables.$main-color-1;
+}
+.dark-grey {
+  background-color: darken(variables.$main-color-3, 10%);
 }
 .right-text {
   margin: 10% 10% 15% 15%;
+}
+.light-text {
+  color: variables.$main-color-1;
 }
 .flex-cont-qoute {
   @include mixins.flex-cont(row,nowrap,space-between);
@@ -139,10 +138,16 @@ top-banner-bottom-angle.jsx-4183910149 {
 }
 .footer-list {
   list-style-type: none;
-  color: #e3e4e6;
+  color: variables.$main-color-3;
   line-height: 32px;
   font-size: 1.2rem;
 }
+
+.position-bottom {
+  margin-top:auto;
+}
+
+
 .flex-cont-qoute ul {
   padding-inline-start: 0;
   margin-block-start: 0;
@@ -155,14 +160,14 @@ top-banner-bottom-angle.jsx-4183910149 {
 .website,
 .tel,
 .linkedin {
-  color: #e3e4e6;
+  color: variables.$main-color-3;
 }
 .qoute {
   font-size: 2rem;
 }
 .table-edit-story {
   font-size: 1.2em;
-  border: 1px solid #152238;
+  border: 1px solid variables.$main-color-2;
   color: #666;
   border-collapse: collapse;
   margin-left: auto;
@@ -176,7 +181,7 @@ top-banner-bottom-angle.jsx-4183910149 {
   th {
     padding: 0.8em;
     border-bottom: 1px solid rgba(181, 213, 144, 0.5);
-    background: #152238;
+    background: variables.$main-color-2;
     color: #fff;
     font-weight: normal;
     text-align: right;

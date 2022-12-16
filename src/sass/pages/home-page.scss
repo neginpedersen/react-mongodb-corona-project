@@ -11,7 +11,7 @@ body h3 {
 }
 
 .dark-blue {
-  background-color: #152238;
+  background-color: variables.$main-color-2;
 }
 .main-flex-cont {
   margin: 0 auto;
@@ -23,8 +23,8 @@ body h3 {
     margin-left: 5%;
   }
 }
-.left-text {
-  color: white;
+.dark-text {
+  color: variables.$text-color-2;
   margin: 14% 4% auto 13%;
 
   h1 {
@@ -36,21 +36,30 @@ top-banner-bottom-angle.jsx-4183910149 {
   height: 34px;
 }
 .top-banner-bottom-angle.jsx-4183910149 {
-  background-color: #e3e4e6;
+  background-color: variables.$main-color-2;
   height: 64px;
   position: relative;
   width: 100%;
 }
 .svg-triangle.jsx-4183910149 {
-  fill: #152238;
+  fill: variables.$main-color-1;
   height: 100%;
   width: 100%;
 }
 .light-grey {
-  background-color: #e3e4e6;
+  background-color: variables.$main-color-1;
+}
+.dark-blue-light-text {
+  color: variables.$text-color-1;
+  background-color: variables.$main-color-2;
+
+}
+.light-text {
+  color: variables.$text-color-1;
 }
 .right-text {
   margin: 10% 10% 15% 15%;
+  color: variables.$text-color-4;
 }
 .flex-cont-qoute {
   @include mixins.flex-cont(row,nowrap,space-between);

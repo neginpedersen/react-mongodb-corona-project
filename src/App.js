@@ -1,8 +1,5 @@
-// import "bootstrap/dist/css/bootstrap.css";
-//import "./sass/main.scss";
 import "./sass/layout/layout.scss";
 import "./sass/pages/home-page.scss";
-
 import "./sass/reset/reset.scss";
 import StoryListEditable from "./components/story-list-editable.component";
 import CreateStory from "./components/create-story.component";
@@ -19,6 +16,8 @@ import Home from "./components/home.component";
 import Profile from "./components/profile.component";
 import BoardUser from "./components/board-user.component";
 import BoardAdmin from "./components/board-admin.component";
+import Footer from './components/footer.component';
+import Test from './components/testcomponent';
 import { history } from "./helpers/history";
 class App extends Component {
 
@@ -41,8 +40,10 @@ class App extends Component {
                 <Route path="/create-story" component={CreateStory} />
                 <Route path="/story-list-editable" component={StoryListEditable} />
                 <Route path="/create-story-captcha" component={CreateStoryCaptcha} />
+                <Route path="/test" component={Test} />
 
             </Switch>
+            <Footer></Footer>
           </div>
       </Router>
     );

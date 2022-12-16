@@ -1,0 +1,38 @@
+.story-list-cont {
+    padding: 1% 0 1% 0;
+}
+.story-image {
+    width: 60px;
+    height: 60px;
+    background-image: url("../../images/covid2trans.png");
+    background-size: cover;
+    background-color: white;
+}
+
+.story-container {
+background-color: white;
+border-radius: 5px;
+border: 1px solid rgb(165, 160, 160);
+margin: 1% 0 1% 25%;
+width:50%;
+padding: 10px;
+box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.image-writer-cont {
+    display: flex;
+    flex-direction: column;
+    padding:5px 0 0 5px;
+    .story-writer {
+        font-weight: 700;
+        &::first-letter{
+            text-transform: uppercase;
+        }
+    }
+
+}
+
+.header-cont{
+    display: flex;
+    flex-direction: row;
+}

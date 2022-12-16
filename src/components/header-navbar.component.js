@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
-import Container from 'react-bootstrap/Container';
 import "bootstrap/dist/css/bootstrap.css";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
 import { connect } from "react-redux";
 import { Router, Link } from "react-router-dom";
-//import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { logout } from "../actions/auth";
 import { clearMessage } from "../actions/message";
 import { history } from '../helpers/history';
-
 class HeaderNavbar extends Component {
   constructor(props) {
     super(props);
@@ -40,102 +35,106 @@ class HeaderNavbar extends Component {
     this.props.dispatch(logout());
   }
 
-   
+
     render() {
       const { currentUser,showAdminBoard } = this.state;
 
         return (
           <Router history={history}>
           <div>
-                    
+
             <header className="App-header">
-      
-            <Navbar bg="light" variant="light">
-              <Container>
-    
-                <Navbar.Brand>
-                  <Link to={"/create-story"} className="nav-link">
+
+              <nav className='navbar dark-blue'>
+                <div className='container'>
+
+               <div className="nav-link navbar-nav">
+                  <Link to={"/create-story"} className="nav-link light-text ">
                     Corona Story
                   </Link>
-                </Navbar.Brand>
-    
-                <Nav className="nav-link">
+                </div>
+
+
                 {showAdminBoard && (
-                  <Nav>
-                  <Link to={"/admin"} className="nav-link">
+                  <div className="nav-link navbar-nav">
+                  <Link to={"/admin"} className="nav-link light-text">
                   Admin Board
                   </Link>
-                </Nav>  
-              
+                </div>
+
+
               )}
 
               {currentUser && (
-                <Nav>
+                <div className="nav-link navbar-nav">
                   <Link to={"/user"} className="nav-link">
                     User
                   </Link>
-                  </Nav>
+                  </div>
               )}
                {currentUser ? (<div className="inherit-display">
-             <Nav>
+             <div className="nav-link navbar-nav">
                   <Link to={"/profile"} className="nav-link">
                     {currentUser.username}
                   </Link>
-              </Nav>
-              <Nav>
+              </div>
+              <div  className="nav-link navbar-nav">
               <a href="/login" className="nav-link" onClick={this.logOut}>
                     LogOut
                   </a>
-            </Nav>
             </div>
-              
+            </div>
+
             ) : (
               <div className="inherit-display">
-              <Nav>
-                  <Link to={"/login"} className="nav-link">
+              <div className="nav-link navbar-nav">
+                  <Link to={"/login"} className="nav-link light-text">
                     Login
                   </Link>
-                  </Nav>
-                  <Nav>
-                  <Link to={"/create-story-captcha"} className="nav-link">
+              </div>
+                  <div className="nav-link navbar-nav">
+                  <Link to={"/create-story-captcha"} className="nav-link light-text">
                   create-story-captcha
                   </Link>
-                  </Nav>
-                  <Nav>
-                  <Link to={"/register"} className="nav-link">
+                  </div>
+                  <div className="nav-link navbar-nav">
+                  <Link to={"/register"} className="nav-link light-text">
                     Sign Up
                   </Link>
-              </Nav>
+              </div>
               </div>
             )}
-                <Nav>
-                    <Link to={"/create-story"} className="nav-link">
+                <div className="nav-link navbar-nav">
+                    <Link to={"/create-story"} className="nav-link light-text">
                       Create Story
                     </Link>
-                  </Nav>
-    
-                  {<Nav>
-                    <Link to={"/story-list-editable"} className="nav-link">
+                  </div>
+
+
+
+                  {<div className="nav-link navbar-nav">
+                    <Link to={"/story-list-editable"} className="nav-link light-text">
                       Editable Story list
                     </Link>
-                  </Nav> }
-    
-                  <Nav>
-                    <Link to={"/story-list"} className="nav-link">
+                  </div> }
+
+                  <div className="nav-link navbar-nav">
+                    <Link to={"/story-list"} className="nav-link light-text">
                       Story List
                     </Link>
-                  </Nav>
-                </Nav>
-    
-              </Container>
-            </Navbar>
-          </header>
+                  </div>
+                </div>
+                </nav>
+                </header>
+
+
+
           </div>
-          </Router> 
+          </Router>
         );
     }
   }
-  
+
 
     function mapStateToProps(state) {
       const { user } = state.auth;
@@ -146,4 +145,3 @@ class HeaderNavbar extends Component {
 
 
     export default connect(mapStateToProps)(HeaderNavbar);
-

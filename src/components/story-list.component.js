@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import axios from 'axios';
 import StoryTableRow from './StoryTableRow';
 import Pagination from './pagination.component';
+import '../sass/main.scss';
+import '../sass/pages/story-list.scss';
+import covid2trans from '../images/covid2trans.png';
+import Image from 'react-bootstrap/Image';
+
+
 
 export default class StoryList extends Component {
 
@@ -43,18 +49,26 @@ export default class StoryList extends Component {
 
   render() {
     return (
-      <div>
 
-   <div className="container">
-                    <div className="text-center">
 
+   <div className="story-list-cont flex-cont-column light-grey">
                         {this.state.pageOfItems.map(item =>
-                            <div key={item.id}> name: {item.name} from:  {item.country} wrote: {item.story}</div>
+                            <div key={item.id} className='story-container'>
+                              <header>
+                                    <div className='header-cont'>
+                                          <div className='story-image'>  </div>
+                                      <div className='image-writer-cont'>
+                                          <div className='story-writer'> {item.name} </div>
+                                          <div className='story-country'> {item.country} </div>
+                                      </div>
+                                    </div>
+                              </header>
+                              <div className='story-text'> {item.story}</div>
+                              </div>
 
                         )}
-                        <Pagination items={this.state.storys} onChangePage={this.onChangePage} />
-                    </div>
-                </div>
+<Pagination items={this.state.storys} onChangePage={this.onChangePage} />
+
       </div>);
   }
 }
